@@ -15,17 +15,18 @@ const displaySearchResult = data => {
     data.forEach(phone => {
         // console.log(phone)
         const div = document.createElement('div')
-        div.classList.add('col')
+        div.classList.add('col', 'container', 'col-lg-4', 'col-sm-12', 'p-5', 'rounded')
         div.innerHTML = `
         
-            <div class="card h-100">
-                <img src="${phone.image}" class="card-img-top" alt="...">
+            <div class="card" style="width: 18rem;">
+                <img src="${phone.image}" class="card-img-top mx-auto p-3" style="width: 200px; height: auto;" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${phone.brand}</h5>
                     <h5 class="card-title">${phone.phone_name}</h5>
-                </div>
-                <button onclick="allPhoneDetail('${phone.slug}')" class="btn btn-outline-secondary" type="button"
+                    <button onclick="allPhoneDetail('${phone.slug}')" class="btn btn-outline-secondary" type="button"
             id="search-button">More Detail</button>
+                </div>
+                
             </div>
             
         
@@ -36,12 +37,12 @@ const displaySearchResult = data => {
 }
 
 const allPhoneDetail = allPhoneId => {
-    console.log(allPhoneId)
+    // console.log(allPhoneId)
     const url = `https://openapi.programming-hero.com/api/phone/${allPhoneId}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetail(data.data))
-        console.log(url)
+        // console.log(url)
 }
 
 
@@ -55,7 +56,7 @@ const displayPhoneDetail = phoneDetail => {
 
     
                 
-    <div class="card-body w-50  justify-content-center">
+    <div class="card-body w-50 bg-secondary text-white mx-auto rounded p-5 m-5">
     <img src="${phoneDetail.image}" class="mx-auto d-block" alt="...">
         <h5 class="card-title">${phoneDetail.brand}</h5>
         <h5 class="card-title">${phoneDetail.name}</h5>
